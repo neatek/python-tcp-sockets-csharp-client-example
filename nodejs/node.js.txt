@@ -1,0 +1,14 @@
+var net = require('net');
+var host = '127.0.0.1';
+var port = 1025;
+
+var socket = new net.Socket();
+
+socket.connect(port, host, () => {
+    socket.write(" PING");
+});
+
+socket.on('data', (data) => {
+    console.log(`${data}`);
+    socket.destroy();
+});
